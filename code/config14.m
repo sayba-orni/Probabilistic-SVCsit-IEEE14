@@ -71,7 +71,7 @@ C.Qg_MVAr(2) = 30;     % small local MVAr support (optional)
 C.bus_wind  = 9;       % wind at bus 9
 C.bus_solar = 14;      % PV at bus 14
 
-% PV module / plant (datasheet-style) 
+% PV module / plant (located Netrokona) 
 C.PV.N_modules = round(30e6 / 280);  % ~30 MW plant, 280 W/module
 C.PV.VMPP  = 31.28;
 C.PV.IMPP  = 8.95;
@@ -81,7 +81,7 @@ C.PV.NOT   = 43;                      % °C
 C.PV.Kv    = -0.0032 * C.PV.VOC;      % V/°C  (-0.32% Voc/°C)
 C.PV.Ki    = -0.0006 * C.PV.ISC;      % A/°C  (-0.06% Isc/°C)
 
-% Wind farm (simple power-curve), rated 15 MW 
+% Wind farm in Cox's Bazar rated 15 MW 
 C.WF.PrMW  = 15;
 C.WF.v_in  = 3;        % m/s (cut-in)
 C.WF.v_r   = 12.5;     % m/s (rated)
