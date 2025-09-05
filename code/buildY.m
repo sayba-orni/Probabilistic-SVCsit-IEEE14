@@ -1,5 +1,7 @@
 function Y = buildY(C)
 % Build Ybus using series Z, per-end shunt C.Bend (j*B/2), and real off-nominal taps C.tap.
+%for now we will keep t=1
+
     N = max(C.pairs(:));
     Y = zeros(N,N);
     for e = 1:size(C.pairs,1)
