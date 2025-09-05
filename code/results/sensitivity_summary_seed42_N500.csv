@@ -1,0 +1,7 @@
+kind,lambda,ratingMVAr,top1,top2,top3,top4,top5
+lambda,50,NaN,BUS-9,MID-9-10,MID-7-9,BUS-10,MID-9-14
+lambda,100,NaN,BUS-9,MID-9-10,MID-7-9,BUS-10,MID-9-14
+lambda,150,NaN,BUS-9,MID-9-10,MID-7-9,BUS-10,MID-9-14
+rating,NaN,150,BUS-9,MID-7-9,MID-9-14,BUS-10,MID-9-10
+rating,NaN,300,BUS-9,MID-9-10,MID-7-9,BUS-10,MID-9-14
+rating,NaN,450,BUS-9,MID-9-10,MID-7-9,BUS-10,MID-9-14

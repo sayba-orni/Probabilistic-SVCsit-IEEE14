@@ -1,0 +1,5 @@
+meanLoss=17.139788
+meanPhi=0.650002
+violProb=1.000000
+meanScore=82.140017
+cvarScore=123.403054
