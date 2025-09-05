@@ -5,9 +5,7 @@ of scenarios via Monte Carlo sampling of weather, load noise, and random outages
 robust Newton–Raphson (NR) power flow with an SVC model (either at a bus or mid-line); and
 rank candidates using a risk-aware objective: active-power losses plus a weighted voltage-
 violation penalty. We summarize risk with CVaR0.90 (tail average of the worst 10% outcomes).
-On 500 scenarios, BUS-9 is consistently optimal; it reduces CVaR by ~84% and the mean score
-by ~82% versus no-SVC, with stable results across RNG seeds, voltage-penalty weights, and
-SVC ratings.
+
 Electricity systems don’t behave the same every day:
 • Solar power depends on sunshine.
 • Wind power depends on wind speed.
