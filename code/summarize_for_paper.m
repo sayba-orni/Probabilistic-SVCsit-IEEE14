@@ -19,13 +19,13 @@ end
 T = T(ix,:);
 W = T(1,:);  % winner by CVaR
 
-% --- Identify greedy loss-only candidate ---
+% Identify greedy loss-only candidate 
 [~, iBestLoss] = min(T.meanLoss);
 lossGreedyName = T.name(iBestLoss);
 fprintf("\n>>> Greedy loss-minimizer: %s (meanLoss = %.3f MW)\n", ...
          lossGreedyName, T.meanLoss(iBestLoss));
 
-% --- baseline: parse if possible, else recompute
+% baseline: parse if possible, else recompute
 haveBaseline = false;
 base = struct('meanLoss',NaN,'meanPhi',NaN,'violProb',NaN,'meanScore',NaN,'cvar',NaN);
 
@@ -50,7 +50,7 @@ else
     warning('Baseline file not found: %s. Will recompute baseline.', basePath);
 end
 
-% --- Recompute baseline and build C,S once ---
+%  Recompute baseline and build C,S once 
 fprintf('>>> recomputing baseline (no SVC) ... ');
 rng(42,'twister');
 C  = config14();
@@ -64,7 +64,7 @@ base.meanScore = getf(B, ["meanScore"]);
 base.cvar      = getf(B, ["cvar","cvarScore"]);
 fprintf('ok\n');
 
-% --- Evaluate loss-greedy candidate (match structure to ranking14.csv) ---
+%  Evaluate loss-greedy candidate 
 cand = parse_candidate(lossGreedyName, C);
 Mloss_raw = evaluate_candidate(cand, C, S);
 Mloss = struct();
@@ -74,7 +74,7 @@ Mloss.violProb   = mean(Mloss_raw.vviol,  'omitnan');
 Mloss.meanScore  = Mloss.meanLoss + 100 * Mloss.meanPhi;
 Mloss.cvarScore  = cvar(Mloss_raw.lossMW + 100*Mloss_raw.phiV, 0.90);
 
-% --- Compute improvement of winner over baseline ---
+%  Compute improvement of winner over baseline 
 imp.cvarAbs   = base.cvar - W.cvarScore;
 imp.cvarRel   = 100 * imp.cvarAbs / base.cvar;
 imp.meanAbs   = base.meanScore - W.meanScore;
@@ -82,7 +82,7 @@ imp.meanRel   = 100 * imp.meanAbs / base.meanScore;
 imp.violAbs   = base.violProb - W.violProb;
 imp.violRel   = 100 * imp.violAbs / max(base.violProb, eps);
 
-% --- Print to console ---
+% Print to console 
 fprintf('\n=== Baseline (no SVC) ===\n');
 fprintf('meanLoss = %.3f MW\n', base.meanLoss);
 fprintf('meanPhi  = %.5f pu-sum\n', base.meanPhi);
@@ -111,7 +111,7 @@ fprintf('CVaR     : %+ .3f  (%+.1f%%)\n', imp.cvarAbs, imp.cvarRel);
 fprintf('MeanScore: %+ .3f  (%+.1f%%)\n', imp.meanAbs, imp.meanRel);
 fprintf('ViolProb : %+ .3f  (%+.1f%%)\n', imp.violAbs, imp.violRel);
 
-% --- Write to file ---
+% Write to file 
 outTxt = fullfile(resDir, 'summary.txt');
 fid = fopen(outTxt, 'w');  assert(fid>0, 'Cannot write %s', outTxt);
 fprintf(fid, 'Baseline (no SVC): meanLoss=%.3f MW, meanPhi=%.5f, violProb=%.3f, meanScore=%.3f, CVaR=%.3f\n', ...
@@ -128,7 +128,7 @@ fprintf('\n>>> wrote %s\n', outTxt);
 fprintf('>>> summarize_for_paper: done\n');
 end
 
-% ---------- Helpers ----------
+%  Helpers 
 
 function cand = parse_candidate(name, C)
     if startsWith(name,"BUS-")
