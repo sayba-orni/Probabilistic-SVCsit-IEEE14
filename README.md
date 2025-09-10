@@ -1,4 +1,4 @@
-# Probabilistic-SVCsit-IEEE14
+# ProbabilisticSVCsitIEEE14
 We study where to place a single Static VAR Compensator (SVC) on the IEEE-14 bus system
 when solar and wind injections, loads, and N-1 line outages are uncertain. We generate hundreds
 of scenarios via Monte Carlo sampling of weather, load noise, and random outages; solve a
