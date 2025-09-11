@@ -1,5 +1,5 @@
 function C = config14()
-% CONFIG14 — Minimal IEEE-14 config struct (no MATPOWER required)
+% CONFIG14 — IEEE14 bus with all synchronous generators turned off except small reactive support on bus 2 . user can modify this as necessary for their case
 
 % system / SVC settings 
 C.Sbase     = 100;                % MVA
