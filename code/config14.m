@@ -1,11 +1,11 @@
 function C = config14()
-% CONFIG14 — IEEE14 bus with all synchronous generators turned off except small reactive support on bus 2 . user can modify this as necessary for their case
+% CONFIG14 — Minimal IEEE-14 config struct (no MATPOWER required)
 
 % system / SVC settings 
 C.Sbase     = 100;                % MVA
 C.Vband     = [0.95 1.05];        % acceptable |V| band
 C.Vref      = 1.00;               % SVC voltage setpoint
-C.SVC_Q_MAX = 300;                % MVAr rating (symmetric)
+C.SVC_Q_MAX = 50;                % MVAr rating (symmetric)
 C.Bmax      =  (C.SVC_Q_MAX) / (C.Vref^2 * C.Sbase);
 C.Bmin      = -C.Bmax;
 
@@ -50,8 +50,9 @@ C.mid_list  = C.pairs;       % all lines as mid-line candidates
 Pd = zeros(1,14); Qd = zeros(1,14);
 Pd( 2)=21.7;  Qd( 2)=12.7;
 Pd( 3)=94.2;  Qd( 3)=19.0;
-Pd( 4)=47.8;  Qd( 4)= 7.6;
+Pd( 4)=47.8;  Qd( 4)= -3.9;
 Pd( 5)= 7.6;  Qd( 5)= 1.6;
+Pd( 6)= 11.2; Qd( 6)= 7.5;
 Pd( 9)=29.5;  Qd( 9)=16.6;
 Pd(10)= 9.0;  Qd(10)= 5.8;
 Pd(11)= 3.5;  Qd(11)= 1.8;
